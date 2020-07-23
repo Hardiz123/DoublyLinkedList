@@ -14,10 +14,11 @@ public class Test {
         System.out.println();
         System.out.println("1.Add item to the list at start");
         System.out.println("2.Add item to the last at the list");
-        System.out.println("3.Reverse List");
-        System.out.println("4.view List");
-        System.out.println("5.View length");
-        System.out.println("6.Exit");
+        System.out.println("3.Insert at middle");
+        System.out.println("4.Reverse List");
+        System.out.println("5.view List");
+        System.out.println("6.View length");
+        System.out.println("7.Exit");
         int choice = scanner.nextInt();
         int value;
         switch (choice) {
@@ -35,17 +36,23 @@ public class Test {
             list.addNode(value);
                 break;       
             case 3:
+            System.out.println("Enter value of item");
+            System.out.println();
+            value =scanner.nextInt();
+            list.insertAtMiddle(value);
+            break;
+            case 4:
             System.out.println();
             list.printreverse();
                 break;
-            case 4:
+            case 5:
             list.printList();
                 break;
-            case 5:
+            case 6:
             int len = list.length();
             System.out.println("Length of DoublyLinkList is:"+len);
             break;
-            case 6:
+            case 7:
             flag = false;
             break;
             default:

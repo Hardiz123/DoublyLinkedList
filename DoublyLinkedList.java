@@ -33,6 +33,28 @@ public class DoublyLinkedList {
         head=newNode;
         }
 
+    public void insertAtMiddle(int data){
+        ListNode newNode = new ListNode(data);
+        if(isEmpty()){
+            System.out.println("Cannot insert in middle the list is empty");
+        }else{
+
+            int mid = (length() % 2 == 0) ? (length()/2) : ((length()+1)/2);
+            ListNode current =head;
+            ListNode temp=null;
+
+            for(int i=1;i<mid;i++){
+                current =current.next;
+            }
+            temp = current.next;
+            temp.previous = current;
+
+            current.next = newNode;
+            newNode.previous = current;
+            newNode.next = temp;
+            temp.previous = newNode; 
+        }
+    }
 
 
     public void printList() {
