@@ -36,26 +36,51 @@ public class DoublyLinkedList {
     public void insertAtMiddle(int data){
         ListNode newNode = new ListNode(data);
         if(isEmpty()){
-            System.out.println("Cannot insert in middle the list is empty");
+            System.out.println("Cannot insert in middle the list is empty"); //If list is empty
         }else{
 
-            int mid = (length() % 2 == 0) ? (length()/2) : ((length()+1)/2);
-            ListNode current =head;
+            int mid = (length() % 2 == 0) ? (length()/2) : ((length()+1)/2); // this ill give the mid point
+            ListNode current =head; //point to the head
             ListNode temp=null;
 
             for(int i=1;i<mid;i++){
-                current =current.next;
+                current =current.next; //point to the element to the next we want to add new node
             }
-            temp = current.next;
-            temp.previous = current;
+            temp = current.next; // assigned to the next of current node
+            temp.previous = current; // next will point to the previous node
 
-            current.next = newNode;
-            newNode.previous = current;
-            newNode.next = temp;
-            temp.previous = newNode; 
+            current.next = newNode; // current will point to the new node
+            newNode.previous = current; // new node will point to the previous node
+            newNode.next = temp; // new node will point to the next node
+            temp.previous = newNode; // next node will point to the new Node
         }
     }
+    public void insertAtpos(int pos , int data){
+        ListNode newNode = new ListNode(data);
+        if(isEmpty()){
+            System.out.println("Cannot insert in middle the list is empty"); //If list is empty
+        }else if(pos==1){
+            addAtFirst(data);
+        }else if(pos>length()){
+            System.out.println("cannot add the position is wrong");
+        }else{
 
+            // int mid = (length() % 2 == 0) ? (length()/2) : ((length()+1)/2); // this ill give the mid point
+            ListNode current =head; //point to the head
+            ListNode temp=null;
+
+            for(int i=1;i<pos-1;i++){
+                current =current.next; //point to the element to the next we want to add new node
+            }
+            temp = current.next; // assigned to the next of current node
+            temp.previous = current; // next will point to the previous node
+
+            current.next = newNode; // current will point to the new node
+            newNode.previous = current; // new node will point to the previous node
+            newNode.next = temp; // new node will point to the next node
+            temp.previous = newNode; // next node will point to the new Node
+        }
+    }
 
     public void printList() {
         ListNode temp = head;
