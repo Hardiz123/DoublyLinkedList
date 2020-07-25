@@ -1,3 +1,4 @@
+// DoublyLinkedList class has been created in a seperate file 
 public class DoublyLinkedList {
     
     private ListNode head;
@@ -21,7 +22,7 @@ public class DoublyLinkedList {
             tail.next=null;
         }
     }
-
+    
     public void addAtFirst(int data) {
         ListNode newNode = new ListNode(data);
         if(isEmpty()){
@@ -38,7 +39,6 @@ public class DoublyLinkedList {
         if(isEmpty()){
             System.out.println("Cannot insert in middle the list is empty"); //If list is empty
         }else{
-
             int mid = (length() % 2 == 0) ? (length()/2) : ((length()+1)/2); // this ill give the mid point
             ListNode current =head; //point to the head
             ListNode temp=null;
@@ -81,10 +81,81 @@ public class DoublyLinkedList {
             temp.previous = newNode; // next node will point to the new Node
         }
     }
+    public void deleteAtFirst(){ //delete at first
+        if(head==null){
+            return ;
+        }
+        head = head.next;
+        head.previous = null;
+    }
 
+    public void deleteAtlast() {
+        tail = tail.previous;
+        tail.next = null;
+    }
+
+    public void deleteAtmiddle() {
+        if(length()==1){
+            deleteAtFirst();
+        }else if(length()==2){
+            deleteAtlast();
+        }
+        else{
+        int mid = (length() % 2 == 0) ? (length()/2) : ((length()+1)/2);
+
+        ListNode t;
+        t =head;
+        for(int i=1;i<mid;i++)
+        {
+            t = t.next;
+        }
+        t.previous.next=t.next;
+        t.next.previous=t.previous;
+        t=t.next;
+        }
+    }
+
+    public void deleteAtpos(int pos) {
+        if(pos==1){
+            deleteAtFirst();
+        }else if(pos==length()){
+            deleteAtlast();
+        }
+        else if(pos>1 && pos<length()){
+        ListNode t;
+        t =head;
+        for(int i=1;i<pos;i++)
+        {
+            t = t.next;
+        }
+        t.previous.next=t.next;
+        t.next.previous=t.previous;
+        t=t.next;
+        }
+    }
+
+    public void deleteByValue(int val) {
+        if(head.data==val){
+            deleteAtFirst();
+        }else if(tail.data==val){
+            deleteAtlast();
+        }else{
+            ListNode temp=head;
+            while (temp!=null && temp.data!=val) {
+                temp = temp.next;
+            }
+            temp.previous.next = temp.next;
+            temp.next.previous = temp.previous;
+            temp = temp.next;
+        }
+    }
+
+
+
+// Transversal of list
     public void printList() {
         ListNode temp = head;
-        if(isEmpty()){
+        if(isEmpty()){ // is a function created to check if list is empty or not
             return;
         }
         while(temp!=null){

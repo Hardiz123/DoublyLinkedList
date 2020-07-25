@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+//THis is the test file to check all the fuctions
 /**
  * Test
  */
@@ -19,7 +19,10 @@ public class Test {
         System.out.println("5.Reverse List");
         System.out.println("6.view List");
         System.out.println("7.View length");
-        System.out.println("8.Exit");
+        System.out.println("8.Delete at middle");
+        System.out.println("9.Delete at position");
+        System.out.println("10.Delete by value");
+        System.out.println("11.Exit");
         int choice = scanner.nextInt();
         int value,pos;
         switch (choice) {
@@ -62,8 +65,19 @@ public class Test {
             case 7:
             int len = list.length();
             System.out.println("Length of DoublyLinkList is:"+len);
-            break;
+                break;
             case 8:
+            list.deleteAtmiddle();
+            break;
+            case 9:
+            System.out.println("Enter pos you want to delete an element");
+            list.deleteAtpos(scanner.nextInt());
+            break;
+            case 10:
+            System.out.println("Enter element you want to delete");
+            list.deleteByValue(scanner.nextInt());
+            break;
+            case 11:
             flag = false;
             break;
             default:
